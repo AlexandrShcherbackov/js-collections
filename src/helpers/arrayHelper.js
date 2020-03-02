@@ -57,6 +57,37 @@ const dublicateAllItemsInBinaryArray = (elements) => (
     .flat()
 );
 
+const summaryRanges = (coll) => {
+  const delimeter = '->';
+  const reducer = (acc, item) => {
+    if (acc.length === 0) {
+      return [].concat(acc, item);
+    }
+
+    const currentRange = acc.slice().pop();
+    if (typeof currentRange === 'number') {
+      if (item === Number(currentRange) + 1) {
+        const range = `${currentRange}${delimeter}${item}`;
+        return [].concat(acc.slice(0, -1), range);
+      }
+      return [].concat(acc.slice(0, -1), item);
+    }
+
+    if (typeof currentRange === 'string') {
+      const [rangeStart, rangeEnd] = currentRange.split(delimeter);
+      if (item === Number(rangeEnd) + 1) {
+        const range = `${rangeStart}${delimeter}${item}`;
+        return [].concat(acc.slice(0, -1), range);
+      }
+
+      return [].concat(acc, item);
+    }
+    return acc;
+  };
+  const checkResult = (item) => (typeof item === 'string');
+  return coll.reduce(reducer, []).filter(checkResult);
+};
+
 
 export {
   uniq,
@@ -67,4 +98,5 @@ export {
   dublicate,
   dublicateItemInArr,
   dublicateAllItemsInBinaryArray,
+  summaryRanges,
 };
