@@ -7,6 +7,10 @@ start:
 publish:
 	npm publish --dry-run
 
+build:
+	rm -rf dist
+	npm run build
+
 lint:
 	npx eslint .
 
