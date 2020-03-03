@@ -1,3 +1,4 @@
-import { summaryRanges } from './helpers/arrayHelper';
+import calcInPolishNotation from './notations/reversePolishNotaion';
 
-console.log(summaryRanges([1, 2, 3]));
+console.log(calcInPolishNotation([1, 2, '+', 4, '*', 3, '+']));
+console.log(calcInPolishNotation([7, 2, 3, '*', '-']));
