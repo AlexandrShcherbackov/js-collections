@@ -1,4 +1,3 @@
-import calcInPolishNotation from './notations/reversePolishNotaion';
+import generate from './matematicalAnalisys/pascalTriangle';
 
-console.log(calcInPolishNotation([1, 2, '+', 4, '*', 3, '+']));
-console.log(calcInPolishNotation([7, 2, 3, '*', '-']));
+console.log(generate(4));
