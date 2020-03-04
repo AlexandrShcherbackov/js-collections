@@ -23,6 +23,14 @@ const filter = (predicat, tree) => {
   };
 };
 
+const reduce = (f, node, acc) => {
+  const newAcc = f(acc, node);
+
+  return node.type === 'file'
+    ? newAcc
+    : node.children.reduce((iAcc, n) => reduce(f, n, iAcc), newAcc);
+};
+
 const downcaseFileNames = (node) => {
   if (node.type === 'file') {
     return { ...node, name: node.name.toLowerCase() };
@@ -31,4 +39,4 @@ const downcaseFileNames = (node) => {
   return { ...node, children: node.children.map(downcaseFileNames) };
 };
 
-export { map, filter, downcaseFileNames };
+export { map, filter, reduce, downcaseFileNames };
