@@ -56,6 +56,18 @@ const findFilesByName = (tree, searchString) => {
   return iter([], '', tree);
 };
 
+const checkSubDirectSize = (tree) => {
+  const calcDirectorySize = (node) => reduce(
+    (acc, i) => (i.type === 'file' ? acc + i.meta.size : acc),
+    node,
+    0,
+  );
+  const descSortBySize = ([, a], [, b]) => (a > b ? -1 : 1);
+  return tree.children
+    .map((item) => [item.name, calcDirectorySize(item)])
+    .sort(descSortBySize);
+};
+
 export {
-  map, filter, reduce, downcaseFileNames, findFilesByName,
+  map, filter, reduce, downcaseFileNames, findFilesByName, checkSubDirectSize
 };

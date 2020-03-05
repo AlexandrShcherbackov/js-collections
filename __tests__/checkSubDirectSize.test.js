@@ -1,4 +1,4 @@
-import { checkSubDirectSize } from './helpers/treesHelper';
+import { checkSubDirectSize } from '../src/helpers/treesHelper';
 
 const tree = {
   children: [
@@ -35,5 +35,8 @@ const tree = {
   type: 'directory',
 };
 
-console.log(checkSubDirectSize(tree));
-console.log(checkSubDirectSize(tree.children[0]));
+describe('checkSubDirectSize', () => {
+  test('should work', () => {
+    expect(checkSubDirectSize(tree)).toEqual([ [ 'hosts', 900 ], [ 'eTc', 600 ], [ 'config.json', 500 ] ]);
+  });
+});
