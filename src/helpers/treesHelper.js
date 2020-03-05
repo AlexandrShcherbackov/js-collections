@@ -39,4 +39,23 @@ const downcaseFileNames = (node) => {
   return { ...node, children: node.children.map(downcaseFileNames) };
 };
 
-export { map, filter, reduce, downcaseFileNames };
+const findFilesByName = (tree, searchString) => {
+  const iter = (acc, currentPath, item) => {
+    const newPath = item.name === '/' ? '' : `${currentPath}/${item.name}`;
+    if (item.type === 'file' && item.name === searchString) {
+      return [...acc, newPath];
+    }
+
+    if (item.children) {
+      return item.children.reduce((iAcc, ii) => iter(iAcc, newPath, ii), acc);
+    }
+
+    return acc;
+  };
+
+  return iter([], '', tree);
+};
+
+export {
+  map, filter, reduce, downcaseFileNames, findFilesByName,
+};

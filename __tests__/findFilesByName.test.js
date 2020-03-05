@@ -1,4 +1,4 @@
-import { findFilesByName } from './helpers/treesHelper';
+import { findFilesByName } from '../src/helpers/treesHelper';
 
 const tree = {
   children: [
@@ -29,4 +29,9 @@ const tree = {
   type: 'directory',
 };
 
-console.log(findFilesByName(tree, 'config.json'));
+describe('findFilesByName', () => {
+  test('should works', () => {
+    expect(findFilesByName(tree, 'config.json')).toEqual(['/eTc/CONSUL/config.json', '/config.json']);
+    expect(findFilesByName(tree, 'hosts')).toEqual(['/hosts']);
+  });
+});
