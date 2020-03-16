@@ -69,5 +69,5 @@ const checkSubDirectSize = (tree) => {
 };
 
 export {
-  map, filter, reduce, downcaseFileNames, findFilesByName, checkSubDirectSize
+  map, filter, reduce, downcaseFileNames, findFilesByName, checkSubDirectSize,
 };

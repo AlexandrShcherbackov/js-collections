@@ -37,6 +37,6 @@ const tree = {
 
 describe('checkSubDirectSize', () => {
   test('should work', () => {
-    expect(checkSubDirectSize(tree)).toEqual([ [ 'hosts', 900 ], [ 'eTc', 600 ], [ 'config.json', 500 ] ]);
+    expect(checkSubDirectSize(tree)).toEqual([['hosts', 900], ['eTc', 600], ['config.json', 500]]);
   });
 });
