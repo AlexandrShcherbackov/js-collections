@@ -39,7 +39,7 @@ const sub = (rational1, rational2) => (
     getNumer(rational1) * getDenom(rational2) - getNumer(rational2) * getDenom(rational1),
     getDenom(rational1) * getDenom(rational2),
   ));
-// END
+
 
 const ratToString = (rat) => `${getNumer(rat)}/${getDenom(rat)}`;
 
