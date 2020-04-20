@@ -28,16 +28,28 @@ const lessCommonDenom = (denom1, denom2) => {
   return denom1 > denom2 ? iter(denom2) : iter(denom1);
 };
 
-const add = (rational1, rational2) => (
+const add = (rat1, rat2) => (
   makeRational(
-    getNumer(rational1) * getDenom(rational2) + getNumer(rational2) * getDenom(rational1),
-    getDenom(rational1) * getDenom(rational2),
+    getNumer(rat1) * getDenom(rat2) + getNumer(rat2) * getDenom(rat1),
+    getDenom(rat1) * getDenom(rat2),
   ));
 
-const sub = (rational1, rational2) => (
+const sub = (rat1, rat2) => (
   makeRational(
-    getNumer(rational1) * getDenom(rational2) - getNumer(rational2) * getDenom(rational1),
-    getDenom(rational1) * getDenom(rational2),
+    getNumer(rat1) * getDenom(rat2) - getNumer(rat2) * getDenom(rat1),
+    getDenom(rat1) * getDenom(rat2),
+  ));
+
+const multi = (rat1, rat2) => (
+  makeRational(
+    getNumer(rat1) * getNumer(rat2),
+    getDenom(rat1) * getDenom(rat2),
+  ));
+
+const div = (rat1, rat2) => (
+  makeRational(
+    getNumer(rat1) * getDenom(rat2),
+    getDenom(rat1) * getNumer(rat2),
   ));
 
 
@@ -52,5 +64,7 @@ export {
   getDenom,
   add,
   sub,
+  multi,
+  div,
   ratToString,
 };

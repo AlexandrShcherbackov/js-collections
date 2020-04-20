@@ -1,5 +1,5 @@
 import {
-  normalize, makeRational, getNumer, getDenom, add, sub, ratToString,
+  normalize, makeRational, getNumer, getDenom, add, sub, multi, div, ratToString,
 } from '../src/matematicalAnalisys/fractions';
 
 describe('normalize', () => {
@@ -36,6 +36,16 @@ describe('rational', () => {
     const rat6 = makeRational(4, 25);
     expect(add(rat5, rat6)).toEqual(makeRational(17, 75));
     expect(sub(rat5, rat6)).toEqual(makeRational(-7, 75));
+  });
+
+  test('multi&div', () => {
+    const rat1 = makeRational(1, 2);
+    const rat2 = makeRational(2, 3);
+    expect(multi(rat1, rat2)).toEqual(makeRational(2, 6));
+
+    const rat3 = makeRational(1, 3);
+    const rat4 = makeRational(1, 2);
+    expect(div(rat3, rat4)).toEqual(makeRational(2, 3));
   });
 
   test('ratToString', () => {
