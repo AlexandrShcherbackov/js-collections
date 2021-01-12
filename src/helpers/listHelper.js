@@ -42,7 +42,7 @@ const reverse = (list) => {
             return acc;
         }
 
-        const newAcc = addNewHead(acc, getFirst(elements));
+        const newAcc = addNewHead(getFirst(elements), acc);
         const rest = getRestOfList(elements);
 
         return iter(rest, newAcc); 
@@ -54,8 +54,18 @@ const reverse = (list) => {
 
 
 //recieve list and element, return new list with element as a head
-const addNewHead = (list, element) => makePair(element, list);
+const addNewHead = (element, list) => makePair(element, list);
 
+const concatLists = (list1, list2) => {
+    if (isEmpty(list1)) {
+        return list2;
+    }
+
+    return addNewHead(
+        getFirstNode(list1),
+        concatLists(getRestOfList(list1), list2),
+    );
+}
 
 export { 
     makeNode,
@@ -66,4 +76,5 @@ export {
     has,
     reverse,
     addNewHead,
+    concatLists,
 };

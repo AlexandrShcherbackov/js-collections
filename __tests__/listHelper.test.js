@@ -6,6 +6,7 @@ import {
     has,
     reverse,
     addNewHead,
+    concatLists,
 } from '../src/helpers/listHelper'
 
 const list = makeList(1, 2, 3, 4);
@@ -33,7 +34,12 @@ describe('Basic list\'s asbstractions test', () => {
     });
 
     it('Does addNewHead work', () => {
-        expect(addNewHead(list, 0)).toEqual(makeList(0, 1, 2, 3, 4));
-        expect(addNewHead(makeList(), 0)).toEqual(makeList(0));
+        expect(addNewHead(0, list)).toEqual(makeList(0, 1, 2, 3, 4));
+        expect(addNewHead(0, makeList())).toEqual(makeList(0));
+    });
+
+    it('Does concatLists work', () => {
+        const list2 = makeList(5, 6, 7, 8);
+        expect(concatLists(list, list2)).toEqual(makeList(1, 2, 3, 4, 5, 6, 7, 8));
     });
 });
