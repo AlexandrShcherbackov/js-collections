@@ -65,7 +65,31 @@ const concatLists = (list1, list2) => {
         getFirstNode(list1),
         concatLists(getRestOfList(list1), list2),
     );
-}
+};
+
+const map = (func, list) => {
+    if (isEmpty(list)) {
+        return makeList();
+    }
+
+    const newElement = func(getFirstNode(list));
+    return addNewHead(newElement, map(func, getRestOfList(list)));
+};
+
+const filter = (predicat, list) => {
+    if (isEmpty(list)) {
+        return makeList();
+    }
+
+    const element = getFirstNode(list);
+    const rest = getRestOfList(list);
+
+    if (predicat(element)) {
+        return addNewHead(element, filter(predicat, rest));
+    }
+
+    return filter(predicat, rest);
+};
 
 export { 
     makeNode,
@@ -77,4 +101,6 @@ export {
     reverse,
     addNewHead,
     concatLists,
+    map,
+    filter,
 };

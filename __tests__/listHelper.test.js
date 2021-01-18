@@ -7,6 +7,8 @@ import {
     reverse,
     addNewHead,
     concatLists,
+    map,
+    filter,
 } from '../src/helpers/listHelper'
 
 const list = makeList(1, 2, 3, 4);
@@ -41,5 +43,17 @@ describe('Basic list\'s asbstractions test', () => {
     it('Does concatLists work', () => {
         const list2 = makeList(5, 6, 7, 8);
         expect(concatLists(list, list2)).toEqual(makeList(1, 2, 3, 4, 5, 6, 7, 8));
+    });
+
+    it('Does map is work', () => {
+        const list2 = makeList(2, 3, 4, 5);
+        const increment = (x) => x + 1;
+        expect(map(increment, list)).toEqual(list2);
+    });
+
+    it('Does filter work', () => {
+        const list2 = makeList(2, 4);
+        const predicat = (el) => el % 2 === 0 ? true : false; 
+        expect(filter(predicat, list)).toEqual(list2);
     });
 });
